@@ -1,0 +1,27 @@
+Greedy.
+input: n(수),k(나누는수)
+n이 1이될때까지 
+1. n에서 1을뺀다
+2. n을 k로 나눈다(단 나누어 떨어질때만)
+
+큰 입력에 대비하여 효과적인 뺄셈 필요
+
+n,k=map(int,input().split())
+result=0
+
+while True:
+    #-1을 반복할 필요없이 한번에 뺄셈가능
+    ****
+    target=(n//k)*k
+    result+=(n-target)
+    n=target
+    ****
+
+    if n<k:
+        break
+    result+=1
+    n//=k
+
+result+=(n-1)
+print(result)
+
