@@ -3,12 +3,28 @@
 #방문하지 않은 인접노드가 있다면 방문처리후 push
 #방문하지 않은 인접노드가 없다면 stack에서 pop 후 2,3번반복
 
-def dfs(graph,v,visited):
+#재귀함수
+def dfs(v):
     visited[v]=True
-    print(v,end==' ')
+    print(v,end=' ')
     for i in graph[v]:
         if not visited[i]:
-            dfs(graph,i,visited)
+            dfs(i)
+
+#반복문(낮은 node우선)
+def dfs2(v):
+    stack=[v]
+    while stack:
+        v=stack.pop()
+        if visit[v]==0:
+            visit[v]=1
+            print(v,end=' ')
+            temp=[]
+            for i in graph[v]:
+                if visit[i]==0:
+                    temp.append(i)
+            temp.sort(reverse=True)
+            stack+=temp
 
 #BFS
 #시작노드를 방문처리후 queue에 push
@@ -17,14 +33,14 @@ def dfs(graph,v,visited):
 
 from collections import deque
 
-def bfs(graph,start,visited):
-    queue=deque([start])
-    visited[start]=True
-
-    whuke queue:
+def bfs(v):
+    queue=deque()
+    visit[v]=1
+    queue.append(v)
+    while queue:
         v=queue.popleft()
         print(v,end=' ')
         for i in graph[v]:
-            if not visited[i]:
+            if visit[i]==0:
+                visit[i]=1
                 queue.append(i)
-                visited[i]=True
