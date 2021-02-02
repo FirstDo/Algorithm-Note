@@ -7,17 +7,23 @@
 
 #재귀함수
 def dfs(v):
+    #방문체크
     visited[v]=True
     print(v,end=' ')
+    #연결되어있는간선중 방문하지않은것 dfs
     for i in graph[v]:
         if not visited[i]:
             dfs(i)
 
 #반복문(낮은 node우선)
 def dfs2(v):
+    #stack에 push
     stack=[v]
+    #stack이 빌때까지
     while stack:
+        #stack서 제거
         v=stack.pop()
+        #방문안했다면, 방문체크하고 연결된간선중 방문하지 않은것 push
         if visit[v]==0:
             visit[v]=1
             print(v,end=' ')
@@ -39,12 +45,12 @@ from collections import deque
 
 def bfs(v):
     queue=deque()
-    visit[v]=1
     queue.append(v)
     while queue:
         v=queue.popleft()
-        print(v,end=' ')
-        for i in graph[v]:
-            if visit[i]==0:
-                visit[i]=1
-                queue.append(i)
+        if not visit[v]:
+            visit[v]=True
+            print(v,end=' ')
+            for i in graph[v]:
+                if not visit[i]:
+                    queue.append(i)
