@@ -1,0 +1,6 @@
+** 입력받는대로 출력
+try:
+	print(input(),end='')
+except EOFError:
+	break
+

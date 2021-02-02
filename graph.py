@@ -1,3 +1,24 @@
+#stack(list를 그대로 사용)
+stack=[]
+stack.append(1)
+stack.pop()
+
+#queue의(collections의 deque를 사용)
+from collections import deque
+queue=deque()               #생성
+queue.append(value)         #뒤로넣고
+queue.popleft()             #앞으로뺀다.
+
+#리스트처럼 사용가능
+queue.insert(index,value)
+queue.remove(value)         #왼쪽부터 탐색해서 하나만 지운다
+queue.reverse()
+
+list(queue)                 #리스트로 변환
+
+
+#그래프 탐색
+
 #DFS
 #주로 최단거리 구하는 문제에 적합
 
@@ -12,8 +33,8 @@ def dfs(v):
     print(v,end=' ')
     #연결되어있는간선중 방문하지않은것 dfs
     for i in graph[v]:
-        if not visited[i]:
-            dfs(i)
+            if not visited[i]:
+                dfs(i)
 
 #반복문(낮은 node우선)
 def dfs2(v):
@@ -24,12 +45,12 @@ def dfs2(v):
         #stack서 제거
         v=stack.pop()
         #방문안했다면, 방문체크하고 연결된간선중 방문하지 않은것 push
-        if visit[v]==0:
-            visit[v]=1
+        if not visit[v]:
+            visit[v]=True
             print(v,end=' ')
             temp=[]
             for i in graph[v]:
-                if visit[i]==0:
+                if not visit[i]:
                     temp.append(i)
             temp.sort(reverse=True)
             stack+=temp
@@ -42,7 +63,6 @@ def dfs2(v):
 #반복
 
 from collections import deque
-
 def bfs(v):
     queue=deque()
     queue.append(v)
@@ -54,3 +74,4 @@ def bfs(v):
             for i in graph[v]:
                 if not visit[i]:
                     queue.append(i)
+

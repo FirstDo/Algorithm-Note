@@ -1,8 +1,0 @@
-**빠른입력
-*입력
-import sys
-data=sys.stdin.readline().rstrip()
-개행문자와 상관없이 int 변환이나 split()은 가능하다
-
-tip:
-input=sys.stdin.readline을 맨 처음에 써 놓기
